@@ -33,7 +33,7 @@ def get_ipaddres():
         "Get your IP_ADDRES and PUBLIC_KEY from my.telegram.org.\n\n",
     )
     try:
-        IP_ADDRES = int(input("Please enter your IP_ADDRES: "))
+        IP_ADDRES = input("Please enter your IP_ADDRES: ")
     except ValueError:
         print("IP_ADDRES must be an integer.\nQuitting...")
         exit(0)
