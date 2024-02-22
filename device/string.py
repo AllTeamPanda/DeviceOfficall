@@ -46,39 +46,7 @@ def session():
     trings = StringSession(CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), 2, ipaddress.ip_address(IP_ADDRES).packed, 443, PUBLIC_KEY,)).decode("ascii"))
     strings = trings
     print(strings)
-    API_ID, API_HASH = get_api_id_and_hash()
-    try:
-        with TelegramClient(strings, API_ID, API_HASH) as bot:
-            print("Generating a string session for •Userbot•")
-            try:
-                bot.send_message(
-                    "me",
-                    f"**Userbot** `SESSION`:\n\n`{bot.session.save()}`\n\n**Do not share this anywhere!**",
-                )
-                print(
-                    "Your SESSION has been generated. Check your Telegram saved messages!"
-                )
-                return
-            except UserIsBotError:
-                print("You are trying to Generate Session for your Bot's Account?")
-                print("Here is That!\n{ultroid.session.save()}\n\n")
-                print("NOTE: You can't use that as User Session..")
-    except ApiIdInvalidError:
-        print(
-            "Your API ID/API HASH combination is invalid. Kindly recheck.\nQuitting..."
-        )
-        exit(0)
-    except ValueError:
-        print("API HASH must not be empty!\nQuitting...")
-        exit(0)
-    except PhoneNumberInvalidError:
-        print("The phone number is invalid!\nQuitting...")
-        exit(0)
-    except Exception as er:
-        print("Unexpected Error Occurred while Creating Session")
-        print(er)
-        print("If you think It as a Bug, Report to @UltroidSupportChat.\n\n")
-
+    
 def main():
     print("Waiting...")
     session()
