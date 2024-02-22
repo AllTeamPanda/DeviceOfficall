@@ -18,4 +18,4 @@ pillow = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-asyncio = "*"
-https://github.com/DevTeamPanda/Telethon/archive/Cartoon.zip = "*"
+https://github.com/DevTeamPanda/Telethon/archive/Cartoon.zip
