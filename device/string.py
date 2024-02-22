@@ -42,11 +42,11 @@ def get_ipaddres():
 
 def session():
     try:
-        IP_ADDRES = int(input("Please enter your IP_ADDRES: "))
+        IP_ADDRES = input("Please enter your IP_ADDRES: ")
         PUBLIC_KEY = input("Please enter your PUBLIC_KEY: ")
     except ImportError:
         print("Eror..")
-    return StringSession(
+    Stringss = StringSession(
         CURRENT_VERSION
         + base64.urlsafe_b64encode(
             struct.pack(
@@ -58,9 +58,8 @@ def session():
             )
         ).decode("ascii")
     )
-        
-def login(): 
-    strings = session()
+    strings = Stringss
+    print(f"{strings}")
     API_ID, API_HASH = get_api_id_and_hash()
     try:
         with TelegramClient(strings, API_ID, API_HASH) as bot:
@@ -96,7 +95,7 @@ def login():
 
 def main():
     print("Waiting...")
-    login()
+    session()
 
 main()
     
