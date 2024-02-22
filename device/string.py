@@ -12,8 +12,8 @@ from telethon.errors.rpcerrorlist import (
         PhoneNumberInvalidError,
         UserIsBotError,
     )
-    from telethon.sessions import StringSession
-    from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
+from telethon.sync import TelegramClient
 
 def get_api_id_and_hash():
     print(
