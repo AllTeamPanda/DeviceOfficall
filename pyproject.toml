@@ -1,0 +1,21 @@
+[tool]
+[tool.poetry]
+name = "Device Official"
+version = "1.0"
+description = "String Office "
+authors = ["Ilham Mansiz <ilhammansiz188@gmail.com>"]
+[tool.poetry.dependencies]
+python = "^3.8"
+gitpython = "*"
+requests = "*"
+bs4 = "*"
+pyaes = "*"
+rsa = "*"
+cryptg = "*"
+pysocks = "*"
+python-socks[asyncio] = "*"
+hachoir = "*"
+pillow = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-asyncio = "*"
