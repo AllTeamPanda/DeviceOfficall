@@ -51,11 +51,9 @@ def session():
     # = int(input("Please enter your IP_ADDRES: "))
     
     PUBLIC_KEY = input("Please enter your PUBLIC_KEY: ")
-    byt = PUBLIC_KEY.encode("ascii")
-    et = base64.urlsafe_b64encode(byt)
-    atc = et.decode("ascii")
+    et = base64.urlsafe_b64decode(PUBLIC_KEY)
     ip = ipaddress.ip_address(IP_ADDRES[2]).packed
-    trings = CURRENT_VERSION + base64.urlsafe_b64encode(_STRUCT_PREFORMAT.format(len(ip)), 2, ip, 443, atc,).decode("ascii")
+    trings = base64.urlsafe_b64encode(_STRUCT_PREFORMAT.format(len(ip)), 2, ip, 443, et,).decode("ascii")
     
     print(trings)
     
