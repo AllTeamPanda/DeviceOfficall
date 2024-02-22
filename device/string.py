@@ -46,6 +46,7 @@ def session():
         PUBLIC_KEY = input("Please enter your PUBLIC_KEY: ")
     except ImportError:
         print("Eror..")
+    dc_id = 2
     Stringss = StringSession(
         CURRENT_VERSION
         + base64.urlsafe_b64encode(
