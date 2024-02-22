@@ -1,0 +1,10 @@
+gitpython
+requests
+bs4
+pyaes
+rsa
+cryptg
+pysocks
+python-socks[asyncio]
+hachoir
+pillow
