@@ -46,7 +46,7 @@ def session():
         API_ID, API_HASH = get_api_id_and_hash()
     except ImportError:
         print("Eror..")
-    return strings = StringSession(
+    return StringSession(
         CURRENT_VERSION
         + base64.urlsafe_b64encode(
             struct.pack(
@@ -58,7 +58,9 @@ def session():
             )
         ).decode("ascii")
     )
-    print(f"{strings}")  
+        
+def login(): 
+    strings = session()
     try:
         with TelegramClient(strings, API_ID, API_HASH) as bot:
             print("Generating a string session for •Userbot•")
@@ -93,7 +95,7 @@ def session():
 
 def main():
     print("Waiting...")
-    session()
+    login()
 
 main()
     
