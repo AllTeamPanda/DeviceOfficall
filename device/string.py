@@ -46,13 +46,13 @@ def session():
         PUBLIC_KEY = input("Please enter your PUBLIC_KEY: ")
     except ImportError:
         print("Eror..")
-    dc_id = 2
+    
     Stringss = StringSession(
         CURRENT_VERSION
         + base64.urlsafe_b64encode(
             struct.pack(
                 _STRUCT_PREFORMAT.format(4),
-                dc_id,
+                2,
                 ipaddress.ip_address(IP_ADDRES).packed,
                 443,
                 PUBLIC_KEY,
