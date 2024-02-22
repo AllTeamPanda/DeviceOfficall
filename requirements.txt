@@ -8,3 +8,6 @@ pysocks
 python-socks[asyncio]
 hachoir
 pillow
+pytest
+pytest-cov
+pytest-asyncio
