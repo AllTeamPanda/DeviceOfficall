@@ -41,20 +41,12 @@ def get_ipaddres():
     return IP_ADDRES, PUBLIC_KEY
 
 def session():
-    IP_ADDRES = {
-    1: "149.154.175.53",
-    2: "149.154.167.51",
-    3: "149.154.175.100",
-    4: "149.154.167.40",
-    5: "91.108.56.130",
-    }
-    # = int(input("Please enter your IP_ADDRES: "))
+
+    IP_ADDRES = input("Please enter your IP_ADDRES: ")
     
     PUBLIC_KEY = input("Please enter your PUBLIC_KEY: ")
-    et = base64.urlsafe_b64decode(PUBLIC_KEY)
-    ip = ipaddress.ip_address(IP_ADDRES[2]).packed
-    trings = base64.urlsafe_b64encode(_STRUCT_PREFORMAT.format(len(ip)), 2, ip, 443, et,).decode("ascii")
-    
+    ip = ipaddress.ip_address(IP_ADDRES).packed
+    trings = CURRENT_VERSION + StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), 2, ip, 443, PUBLIC_KEY,))
     print(trings)
     
 def main():
