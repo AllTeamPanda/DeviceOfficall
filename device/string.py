@@ -79,26 +79,19 @@ def encode():
 def encodes():
      ppk = input("Please enter your STRING: ")     
      if len(ppk):
+         if ppk[0] != CURRENT_VERSION:
+             raise ValueError("Not a valid string")
+         ppk = ppk[1:]
+         ip_len = 4 if len(ppk) == 352 else 16
          data_ = struct.unpack(
-                _STRUCT_PREFORMAT.format(4), StringSession.decode(ppk)
+                _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
 
-         if len(ppk):
-             auth_id = 352
-         else:
-             auth_id = 16
-
-         dc_id, api_id, tesmode, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
-     try:
-         et = dc_id, auth_key
-         atc = et
-         tes = tesmode
+         
          print(
             f"**=>> Decoded Text :** `{data_}`\n\n**=>> OUTPUT :**\n`{atc}` \n\n Mode> {tesmode}\n\n  and Api Id: {api_id} "
          )
-     except Exception as p:
-         print(event, "**ERROR :** " + str(p))
-
+     
 
 
 def main():
