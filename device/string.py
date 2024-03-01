@@ -78,11 +78,8 @@ def encode():
 
 def encodes():
      ppk = input("Please enter your STRING: ")     
-     if len(ppk) in _STRUCT_PREFORMAT:
-         data_ = struct.unpack(CURRENT_VERSION +
-                 _STRUCT_PREFORMAT[len(ppk)],
-                 base64.urlsafe_b64decode(ppk + "=" * (-len(ppk) % 4)),
-         )
+     if len(ppk):
+         data_ = struct.unpack(_STRUCT_PREFORMAT.format(4), base64.urlsafe_b64decode(ppk))
          if len(ppk) in [4]:
              auth_id = 2
          else:
