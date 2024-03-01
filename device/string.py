@@ -89,7 +89,7 @@ def encodes():
 
          
          print(
-            f"**=>> Decoded Text :** `{data_}`\n\n**=>> OUTPUT :**\n`{atc}` \n\n Mode> {tesmode}\n\n  and Api Id: {api_id} "
+            f"**=>> Decoded Text :{data_}"
          )
      
 
