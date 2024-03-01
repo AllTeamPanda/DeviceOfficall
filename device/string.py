@@ -79,11 +79,14 @@ def encode():
 def encodes():
      ppk = input("Please enter your STRING: ")     
      if len(ppk):
-         data_ = struct.unpack(_STRUCT_PREFORMAT.format(4), base64.urlsafe_b64decode(ppk))
-         if len(ppk) in [4]:
-             auth_id = 2
+         data_ = struct.unpack(
+                _STRUCT_PREFORMAT.format(4), StringSession.decode(ppk)
+            )
+
+         if len(ppk):
+             auth_id = 352
          else:
-             auth_id = 3
+             auth_id = 16
 
          dc_id, api_id, tesmode, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
      try:
