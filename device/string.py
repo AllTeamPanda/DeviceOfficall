@@ -76,9 +76,34 @@ def encode():
      except Exception as p:
          print(event, "**ERROR :** " + str(p))
 
+def encodes():
+     ppk = input("Please enter your STRING: ")     
+     if len(ppk) in _STRUCT_PREFORMAT:
+         data_ = struct.unpack(CURRENT_VERSION +
+                 _STRUCT_PREFORMAT[len(ppk)],
+                 base64.urlsafe_b64decode(ppk + "=" * (-len(ppk) % 4)),
+         )
+         if len(ppk) in [4]:
+             auth_id = 2
+         else:
+             auth_id = 3
+
+         dc_id, api_id, tesmode, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
+     try:
+         et = dc_id, auth_key
+         atc = et
+         tes = tesmode
+         print(
+            f"**=>> Decoded Text :** `{data_}`\n\n**=>> OUTPUT :**\n`{atc}` \n\n Mode> {tesmode}\n\n  and Api Id: {api_id} "
+         )
+     except Exception as p:
+         print(event, "**ERROR :** " + str(p))
+
+
+
 def main():
     print("Waiting...")
-    encode()
+    encodes()
 
 main()
     
