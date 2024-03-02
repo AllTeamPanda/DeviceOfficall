@@ -84,7 +84,15 @@ def encode():
          dc_id, auth_key = data_[0], data_[auth_id]  
          ip = ipaddress.ip_address(DC_IPV4[dc_id]).packed
          stringtele = StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
-         print(f"BERHASIL YAAA 🙃:\n\n`1{stringtele}`")
+         if len(stringtele):
+             if stringtele[0] != CURRENT_VERSION:
+                 raise ValueError("Not a valid string")
+             stringtele = stringtele[1:]
+             ip_lenn = 4 if len(stringtele) == 352 else 16
+             data_ = struct.unpack(
+                    _STRUCT_PREFORMAT.format(ip_lenn), StringSession.decode(stringtele)
+                )
+         print(f"BERHASIL YAAA 🙃:\n\n`{CURRENT_VERSION}{stringtele}`\n\n INI DI DECODE LAGI :(\n{data_}")
 
 def encodes():
      ppk = input("Please enter your STRING: ")     
