@@ -96,7 +96,7 @@ def encode():
 
 def encodesstringte():
      ppk = input("Please enter your STRING: ")   
-     dk = encode(ppk)
+     dk = ppk
      if len(dk):
          if dk[0] != CURRENT_VERSION:
              raise ValueError("Not a valid string")
@@ -106,7 +106,7 @@ def encodesstringte():
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(dk)
             )
 
-         print(f"=>> Decoded Text :{data_}")
+         print(f"=>> Decoded Text :NOL:{data_[0]}\n\n1:{data_[1]}\n\n2: {data_[2]}\n\n3: {data_[3]}\n\n4:{data_[4]}")
      
 
 def encodes():
@@ -136,7 +136,7 @@ def main():
     try:
         type_of_ss = int(
             input(
-                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session.\n\nEnter choice:  "
+                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telur.\n\nEnter choice:  "
             )
         )
     except Exception as e:
@@ -146,6 +146,8 @@ def main():
         encodes()
     elif type_of_ss == 2:
         encode()
+    elif type_of_ss == 3:
+        encodesstringte()
     else:
         print("Invalid choice.")
     x = input("Run again? (Y/n)")
