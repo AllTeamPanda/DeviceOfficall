@@ -116,7 +116,7 @@ def encodes():
              raise ValueError("Not a valid string")
          ppk = ppk[1:]
          ip_len = 4 if len(ppk) == 352 else 16
-         _dc_id, ip, _port, key = struct.unpack(
+         data_ = struct.unpack(
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
          if len(ppk):
