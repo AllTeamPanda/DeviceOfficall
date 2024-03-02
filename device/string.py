@@ -81,7 +81,7 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_pyro[0], data_pyro[auth_id]  
-         encodestring = CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii")
+         encodestring = base64.urlsafe_b64encode(struct.pack(CURRENT_VERSION + _STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii")
          if len(encodestring):
              if encodestring[0] != CURRENT_VERSION:
                  raise ValueError("Not a valid string")
