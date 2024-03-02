@@ -72,7 +72,6 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
-     try:
          print(
             StringSession(
                 CURRENT_VERSION
@@ -86,9 +85,7 @@ def encode():
                     )
                 ).decode("ascii")
             ))
-     except Exception as p:
-         print(event, "**ERROR :** " + str(p))
-
+     
 def encodes():
      ppk = input("Please enter your STRING: ")     
      if len(ppk):
