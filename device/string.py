@@ -15,6 +15,15 @@ from telethon.errors.rpcerrorlist import (
 from telethon.sessions import StringSession
 from telethon.sync import TelegramClient
 
+
+def clear_screen():
+    # https://www.tutorialspoint.com/how-to-clear-screen-in-python#:~:text=In%20Python%20sometimes%20we%20have,screen%20by%20pressing%20Control%20%2B%20l%20.
+    if os.name == "posix":
+        os.system("clear")
+    else:
+        # for windows platfrom
+        os.system("cls")
+            
 def get_api_id_and_hash():
     print(
         "Get your API ID and API HASH from my.telegram.org\n\n",
@@ -61,6 +70,7 @@ DC_IPV4 = {
 
 def encode():
      ppk = input("Please enter your STRING: ")
+     clear_screen()   
      if len(ppk) in _PYRO_FORM.keys():
          data_ = struct.unpack(
                  _PYRO_FORM[len(ppk)],
@@ -74,7 +84,7 @@ def encode():
          dc_id, auth_key = data_[0], data_[auth_id]  
          ip = ipaddress.ip_address(DC_IPV4[dc_id]).packed
          stringtele = StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
-         print(f"{stringtele}")
+         print(f"BERHASIL YAAA 🙃:\n\n1{stringtele}")
 
 def encodes():
      ppk = input("Please enter your STRING: ")     
