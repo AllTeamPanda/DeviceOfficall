@@ -91,7 +91,7 @@ def encode():
              data_ = struct.unpack(
                     _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(encodestring)
                 )   
-         print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\nTelethon:\n{data_}\n\nPyrogram:\n{data_pyro}")
+         print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\nTelethon:\n{data_}\nDC :{data_[0]}\n{data_[auth_id]}\n\nPyrogram:\n{data_pyro}")
 
 
 def encodesstringte():
