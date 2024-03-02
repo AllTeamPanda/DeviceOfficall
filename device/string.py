@@ -81,19 +81,16 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]  
-         print(
-                CURRENT_VERSION
-                + base64.urlsafe_b64encode(
-                    struct.pack(
-                        _STRUCT_PREFORMAT.format(4),
-                        dc_id,
-                        ipaddress.ip_address(DC_IPV4[dc_id]).packed,
-                        443,
-                        auth_key,
-                    )
-                ).decode("ascii")
-            )
-         #print(f"BERHASIL YAAA 🙃:\n\n`{CURRENT_VERSION}{stringtele}`\n\n INI DI DECODE LAGI :(\n{data_}")
+         encodestring = CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii")
+         if len(encodestring):
+             if encodestring[0] != CURRENT_VERSION:
+                 raise ValueError("Not a valid string")
+             encodestring = encodestring[1:]
+             ip_len = 4 if len(encodestring) == 352 else 16
+             data_ = struct.unpack(
+                    _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(encodestring)
+                )   
+         print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\n{data_}")
 
 
 def encodesstringte():
