@@ -115,10 +115,11 @@ def encodes():
              raise ValueError("Not a valid string")
          ppk = ppk[1:]
          ip_len = 4 if len(ppk) == 352 else 16
-         data_ = struct.unpack(
+         _dc_id, ip, _port, key = struct.unpack(
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
-         dc_id, auth_key = data_[0], data_[auth_id]
+         dc_id = _dc_id
+         auth_key = key
          api_id = "1234"
          test_mode = "false"
          is_bot = "false"
