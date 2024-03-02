@@ -60,7 +60,7 @@ DC_IPV4 = {
 }
 
 def encode():
-     ppk = int(input("Please enter your STRING: "))    
+     ppk = input("Please enter your STRING: ")
      if len(ppk) in _PYRO_FORM.keys():
          data_ = struct.unpack(
                  _PYRO_FORM[len(ppk)],
@@ -71,8 +71,9 @@ def encode():
          else:
              auth_id = 3
 
-         dc_id, auth_key = data_[0], data_[auth_id]   
-         stringtele = StringSession.encode(struct.pack(CURRENT_VERSION + _STRUCT_PREFORMAT.format(len(4)), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,))
+         dc_id, auth_key = data_[0], data_[auth_id]  
+         ip = ipaddress.ip_address(DC_IPV4[dc_id]).packed
+         stringtele = StringSession.encode(struct.pack(CURRENT_VERSION + _STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
          print(f"{stringtele}")
 
 def encodes():
