@@ -83,7 +83,7 @@ def encode():
 
          dc_id, auth_key = data_[0], data_[auth_id]  
          ip = ipaddress.ip_address(DC_IPV4[dc_id]).packed
-         stringtele = StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
+         stringtele = 1 + StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
          if len(stringtele):
              if stringtele[0] != CURRENT_VERSION:
                  raise ValueError("Not a valid string")
