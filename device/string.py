@@ -126,7 +126,7 @@ def encodes():
          is_bot = False
          user_id = 7088621859
          #stringsdd = base64.urlsafe_b64encode(struct.pack(SESSION_STRING_FORMAT, dc_id, api_id, False, auth_key, user_id, False)).decode("ascii")
-         stringsdd = base64.urlsafe_b64encode(struct.pack(SESSION_STRING_FORMAT, dc_id, api_id, auth_key, user_id, False)).decode().rstrip("=")
+         stringsdd = base64.urlsafe_b64encode(struct.pack(SESSION_STRING_FORMAT, dc_id, api_id, auth_key, user_id)).decode().rstrip("=")
          print(f"=>> Decoded Text : Strings Pyrogram:\n\n{stringsdd}\n\nDECODE TELETHON🙃:\n{data_}")
      
 
