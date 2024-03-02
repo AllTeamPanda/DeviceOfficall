@@ -72,7 +72,7 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]   
-         stringtele = StringSession(CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii"))
+         stringtele = CURRENT_VERSION + StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(4)), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,))
          print(f"{stringtele}")
 
 def encodes():
