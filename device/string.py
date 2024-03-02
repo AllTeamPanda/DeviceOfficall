@@ -119,7 +119,7 @@ def encodes():
          data_ = struct.unpack(
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
-         auth_id = 3        
+         auth_id = 2       
          dc_id, auth_key = data_[0], data_[auth_id]       
          api_id = 6723770092
          test_mode = False
