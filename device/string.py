@@ -71,7 +71,7 @@ def encode():
          else:
              auth_id = 3
 
-         dc_id, auth_key = data_[0], data_[1], data_[2], data_[auth_id]   
+         dc_id, auth_key = data_[0], data_[auth_id]   
          print(f"{dc_id}, {auth_key}")
 """
          print(
