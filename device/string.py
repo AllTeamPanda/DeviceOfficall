@@ -71,7 +71,7 @@ DC_IPV4 = {
 def encode():
      ppk = input("Please enter your STRING: ") 
      if len(ppk) in _PYRO_FORM.keys():
-         data_ = struct.unpack(
+         data_pyro = struct.unpack(
                  _PYRO_FORM[len(ppk)],
                  base64.urlsafe_b64decode(ppk + "=" * (-len(ppk) % 4)),
          )
@@ -80,7 +80,7 @@ def encode():
          else:
              auth_id = 3
 
-         dc_id, auth_key = data_[0], data_[auth_id]  
+         dc_id, auth_key = data_pyro[0], data_pyro[auth_id]  
          encodestring = CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii")
          if len(encodestring):
              if encodestring[0] != CURRENT_VERSION:
@@ -90,7 +90,7 @@ def encode():
              data_ = struct.unpack(
                     _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(encodestring)
                 )   
-         print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\n{data_}")
+         print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\nTelethon:\n{data_}\n\nPyrogram:\n{data_pyro}")
 
 
 def encodesstringte():
