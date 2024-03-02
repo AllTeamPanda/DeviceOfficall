@@ -119,7 +119,7 @@ def encodes():
          data_ = struct.unpack(
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
-         if len(ppk):
+         if data_:
              auth_id = 2
          else:
              auth_id = 3
