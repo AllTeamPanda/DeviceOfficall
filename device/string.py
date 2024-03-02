@@ -120,7 +120,7 @@ def encodes():
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
          auth_id = 2       
-         dc_id, auth_key = data_[0], data_[auth_id]       
+         dc_id, auth_key = data_[0], data_[3]       
          api_id = 6723770092
          test_mode = False
          is_bot = False
