@@ -68,7 +68,7 @@ DC_IPV4 = {
     5: "91.108.56.130",
 }
 
-def encode(ppk):
+def encode():
      ppk = input("Please enter your STRING: ") 
      if len(ppk) in _PYRO_FORM.keys():
          data_ = struct.unpack(
