@@ -119,7 +119,7 @@ def encodes():
          _dc_id, ip, _port, key = struct.unpack(
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
             )
-         if len(ppk) == 352 else 16:
+         if len(ppk):
              auth_id = 2
          else:
              auth_id = 3
