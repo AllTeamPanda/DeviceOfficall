@@ -73,7 +73,7 @@ def encode():
 
          dc_id, auth_key = data_[0], data_[auth_id]  
          ip = ipaddress.ip_address(DC_IPV4[dc_id]).packed
-         stringtele = StringSession.encode(struct.pack(CURRENT_VERSION + _STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
+         stringtele = StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
          print(f"{stringtele}")
 
 def encodes():
