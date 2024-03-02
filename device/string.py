@@ -81,7 +81,7 @@ def encode(ppk):
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]  
-         return StringSession(
+         print(f"{StringSession(
                 CURRENT_VERSION
                 + base64.urlsafe_b64encode(
                     struct.pack(
@@ -92,7 +92,7 @@ def encode(ppk):
                         auth_key,
                     )
                 ).decode("ascii")
-            )
+            )}")
          #print(f"BERHASIL YAAA 🙃:\n\n`{CURRENT_VERSION}{stringtele}`\n\n INI DI DECODE LAGI :(\n{data_}")
 
 
@@ -140,7 +140,7 @@ def main():
     if type_of_ss == 1:
         encodes()
     elif type_of_ss == 2:
-        encodesstringte()
+        encode()
     else:
         print("Invalid choice.")
     x = input("Run again? (Y/n)")
