@@ -68,9 +68,8 @@ DC_IPV4 = {
     5: "91.108.56.130",
 }
 
-def encode():
-     ppk = input("Please enter your STRING: ")
-     clear_screen()   
+def encode(ppk):
+     #ppk = input("Please enter your STRING: ") 
      if len(ppk) in _PYRO_FORM.keys():
          data_ = struct.unpack(
                  _PYRO_FORM[len(ppk)],
@@ -82,17 +81,35 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]  
-         ip = ipaddress.ip_address(DC_IPV4[dc_id]).packed
-         stringtele = 1 + StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), dc_id, ip, 443, auth_key,))
-         if len(stringtele):
-             if stringtele[0] != CURRENT_VERSION:
-                 raise ValueError("Not a valid string")
-             stringtele = stringtele[1:]
-             ip_lenn = 4 if len(stringtele) == 352 else 16
-             data_ = struct.unpack(
-                    _STRUCT_PREFORMAT.format(ip_lenn), StringSession.decode(stringtele)
-                )
-         print(f"BERHASIL YAAA 🙃:\n\n`{CURRENT_VERSION}{stringtele}`\n\n INI DI DECODE LAGI :(\n{data_}")
+         return StringSession(
+                CURRENT_VERSION
+                + base64.urlsafe_b64encode(
+                    struct.pack(
+                        _STRUCT_PREFORMAT.format(4),
+                        dc_id,
+                        ipaddress.ip_address(DC_IPV4[dc_id]).packed,
+                        443,
+                        auth_key,
+                    )
+                ).decode("ascii")
+            )
+         #print(f"BERHASIL YAAA 🙃:\n\n`{CURRENT_VERSION}{stringtele}`\n\n INI DI DECODE LAGI :(\n{data_}")
+
+
+def encodesstringte():
+     ppk = input("Please enter your STRING: ")   
+     dk = encode(ppk)
+     if len(dk):
+         if dk[0] != CURRENT_VERSION:
+             raise ValueError("Not a valid string")
+         dk = dk[1:]
+         ip_len = 4 if len(dk) == 352 else 16
+         data_ = struct.unpack(
+                _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(dk)
+            )
+
+         print(f"=>> Decoded Text :{data_}")
+     
 
 def encodes():
      ppk = input("Please enter your STRING: ")     
@@ -123,7 +140,7 @@ def main():
     if type_of_ss == 1:
         encodes()
     elif type_of_ss == 2:
-        encode()
+        encodesstringte()
     else:
         print("Invalid choice.")
     x = input("Run again? (Y/n)")
