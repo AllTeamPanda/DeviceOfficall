@@ -73,10 +73,19 @@ def encode():
 
          dc_id, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
      try:
-         telethonstring = StringSession(CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii"))
          print(
-            f"**=>> Decoded Text :{telethonstring}"
-         )
+            StringSession(
+                CURRENT_VERSION
+                + base64.urlsafe_b64encode(
+                    struct.pack(
+                        _STRUCT_PREFORMAT.format(4),
+                        dc_id,
+                        ipaddress.ip_address(DC_IPV4[dc_id]).packed,
+                        443,
+                        auth_key,
+                    )
+                ).decode("ascii")
+            ))
      except Exception as p:
          print(event, "**ERROR :** " + str(p))
 
