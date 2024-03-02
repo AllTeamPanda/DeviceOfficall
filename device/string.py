@@ -51,7 +51,7 @@ def session():
 
 
 _PYRO_FORM = {351: ">B?256sI?", 356: ">B?256sQ?", 362: ">BI?256sQ?"}
-"""
+
 def encode():
      ppk = input("Please enter your STRING: ")     
      if len(ppk) in _PYRO_FORM.keys():
@@ -74,7 +74,7 @@ def encode():
          )
      except Exception as p:
          print(event, "**ERROR :** " + str(p))
-"""
+
 def encodes():
      ppk = input("Please enter your STRING: ")     
      if len(ppk):
@@ -92,7 +92,7 @@ def encodes():
 
 def main():
     print("Waiting...")
-    encodes()
+    encode()
 
 main()
     
