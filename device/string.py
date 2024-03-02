@@ -106,7 +106,7 @@ def encodesstringte():
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(dk)
             )
 
-         print(f"=>> Decoded Text :NOL:{data_[0]}\n\n1:{data_[1]}\n\n2: {data_[2]}\n\n3: {data_[3]}\n\n4:{data_[4]}")
+         print(f"=>> Decoded Text :NOL:{data_[0]}\n\n1:{data_[1]}\n\n2: {data_[2]}\n\n3: {data_[3]}")
      
 
 def encodes():
@@ -136,7 +136,7 @@ def main():
     try:
         type_of_ss = int(
             input(
-                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telur.\n\nEnter choice:  "
+                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telur dadar.\n\nEnter choice:  "
             )
         )
     except Exception as e:
