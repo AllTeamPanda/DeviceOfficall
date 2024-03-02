@@ -72,20 +72,8 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]   
-         
-         print(
-            StringSession(
-                CURRENT_VERSION
-                + base64.urlsafe_b64encode(
-                    struct.pack(
-                        _STRUCT_PREFORMAT.format(4),
-                        dc_id,
-                        ipaddress.ip_address(DC_IPV4[dc_id]).packed,
-                        443,
-                        auth_key,
-                    )
-                ).decode("ascii")
-            ))
+         stringtele = StringSession(CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii"))
+         print(f"{stringtele}")
 
 def encodes():
      ppk = input("Please enter your STRING: ")     
