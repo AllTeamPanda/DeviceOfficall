@@ -81,7 +81,7 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]  
-         print(StringSession(
+         print(
                 CURRENT_VERSION
                 + base64.urlsafe_b64encode(
                     struct.pack(
@@ -92,7 +92,7 @@ def encode():
                         auth_key,
                     )
                 ).decode("ascii")
-            ))
+            )
          #print(f"BERHASIL YAAA 🙃:\n\n`{CURRENT_VERSION}{stringtele}`\n\n INI DI DECODE LAGI :(\n{data_}")
 
 
