@@ -124,10 +124,10 @@ def encodes():
          else:
              auth_id = 3
          dc_id, auth_key = data_[0], data_[auth_id]       
-         api_id = "1234"
-         test_mode = "false"
-         is_bot = "false"
-         user_id = "12344"
+         api_id = 6723770092
+         test_mode = False
+         is_bot = False
+         user_id = 7088621859
          packed = struct.pack(SESSION_STRING_FORMAT, dc_id, api_id, test_mode, auth_key, user_id, is_bot)
          stringsdd = base64.urlsafe_b64encode(packed).decode().rstrip("=")
          print(f"=>> Decoded Text : Strings Pyrogram:\n\n{stringsdd}\n\nDECODE TELETHON🙃:\n{data_}")
