@@ -64,13 +64,11 @@ def encode():
          else:
              auth_id = 3
 
-         dc_id, api_id, tesmode, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
+         dc_id, auth_key = data_[0], data_[1], data_[2], data_[auth_id]       
      try:
-         et = dc_id, auth_key
-         atc = et
-         tes = tesmode
+         telethonstring = StringSession(CURRENT_VERSION + base64.urlsafe_b64encode(struct.pack(_STRUCT_PREFORMAT.format(4), dc_id, ipaddress.ip_address(DC_IPV4[dc_id]).packed, 443, auth_key,)).decode("ascii"))
          print(
-            f"**=>> Decoded Text :** `{data_}`\n\n**=>> OUTPUT :**\n`{atc}` \n\n Mode> {tesmode}\n\n  and Api Id: {api_id} "
+            f"**=>> Decoded Text :{telethonstring}"
          )
      except Exception as p:
          print(event, "**ERROR :** " + str(p))
@@ -91,8 +89,27 @@ def encodes():
 
 
 def main():
-    print("Waiting...")
-    encode()
+    print("Waiting")
+    try:
+        type_of_ss = int(
+            input(
+                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session.\n\nEnter choice:  "
+            )
+        )
+    except Exception as e:
+        print(e)
+        exit(0)
+    if type_of_ss == 1:
+        encodes()
+    elif type_of_ss == 2:
+        encode()
+    else:
+        print("Invalid choice.")
+    x = input("Run again? (Y/n)")
+    if x.lower() in ["y", "yes"]:
+        main()
+    else:
+        exit(0)
 
 main()
     
