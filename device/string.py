@@ -72,9 +72,8 @@ def encode():
              auth_id = 3
 
          dc_id, auth_key = data_[0], data_[auth_id]   
-         print(f"{dc_id}, {auth_key}")
-"""
-         print(
+         
+         print(f"{
             StringSession(
                 CURRENT_VERSION
                 + base64.urlsafe_b64encode(
@@ -86,8 +85,7 @@ def encode():
                         auth_key,
                     )
                 ).decode("ascii")
-            ))
-"""
+            ))}"
 
 def encodes():
      ppk = input("Please enter your STRING: ")     
