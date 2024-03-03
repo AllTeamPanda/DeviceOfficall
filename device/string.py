@@ -44,8 +44,8 @@ def get_pyro():
     API_ID, API_HASH = get_api_id_and_hash()
     SESSION = input("Please enter your API ID: ")
     app = Client('userbot', api_id=API_ID, api_hash=API_HASH, session_string=SESSION)
-    app.run()
-    app.run.send_message(
+    app.start()
+    app.send_message(
                 "me",
                 f"\n\n**DO NOT SHARE it.**",
     )
