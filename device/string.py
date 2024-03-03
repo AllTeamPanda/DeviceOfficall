@@ -68,6 +68,8 @@ DC_IPV4 = {
     4: "149.154.167.91",
     5: "91.108.56.130",
 }
+SESSION_STRING_FORMAT_64 = ">B?256sQ?"
+MAX_USER_ID_OLD = 2147483647
 
 def encode():
      ppk = input("Please enter your STRING: ") 
@@ -126,7 +128,7 @@ def encodes():
          user_id = 1603412565
          strings = base64.urlsafe_b64encode(
                  struct.pack(
-                     SESSION_STRING_FORMAT,
+                     SESSION_STRING_FORMAT if user_id < MAX_USER_ID_OLD else SESSION_STRING_FORMAT_64,
                      dc_id,
                      test_mode,
                      auth_key,
