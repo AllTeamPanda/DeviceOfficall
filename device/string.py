@@ -42,7 +42,7 @@ def get_pyro():
         "String sessions terbaru \n\n",
     )
     API_ID, API_HASH = get_api_id_and_hash()
-    SESSION = input("Please enter your API ID: ")
+    SESSION = input("Please enter your SESSIONS: ")
     app = Client('userbot', api_id=API_ID, api_hash=API_HASH, session_string=SESSION)
     app.start()
     app.send_message(
