@@ -123,7 +123,7 @@ def encodes():
          dc_id, auth_key = data_[0], data_[3]       
          test_mode = False
          is_bot = False
-         user_id = 7088621859
+         user_id = 1603412565
          strings = base64.urlsafe_b64encode(
                  struct.pack(
                      SESSION_STRING_FORMAT,
