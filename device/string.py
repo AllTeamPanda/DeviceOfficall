@@ -6,7 +6,7 @@ from telethon.errors.rpcerrorlist import AuthKeyDuplicatedError
 from telethon.sessions.string import _STRUCT_PREFORMAT, CURRENT_VERSION, StringSession
 import os
 from time import sleep
-
+from pyrogram import Client
 from telethon.errors.rpcerrorlist import (
         ApiIdInvalidError,
         PhoneNumberInvalidError,
@@ -35,7 +35,20 @@ def get_api_id_and_hash():
         exit(0)
     API_HASH = input("Please enter your API HASH: ")
     return API_ID, API_HASH
+        
 
+def get_pyro():
+    print(
+        "String sessions \n\n",
+    )
+    API_ID, API_HASH = get_api_id_and_hash()
+    SESSION = input("Please enter your API ID: ")
+    app = Client('userbot', api_id=API_ID, api_hash=API_HASH, session_string=SESSION)
+    app.run()
+    app.run.send_message(
+                "me",
+                f"\n\n**DO NOT SHARE it.**",
+    )
 
 def get_ipaddres():
     print(
@@ -157,6 +170,8 @@ def main():
         encode()
     elif type_of_ss == 3:
         encodesstringte()
+    elif type_of_ss == 4:
+        get_pyro()
     else:
         print("Invalid choice.")
     x = input("Run again? (Y/n)")
