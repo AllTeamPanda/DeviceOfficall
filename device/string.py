@@ -39,7 +39,7 @@ def get_api_id_and_hash():
 
 def get_pyro():
     print(
-        "String sessions \n\n",
+        "String sessions terbaru \n\n",
     )
     API_ID, API_HASH = get_api_id_and_hash()
     SESSION = input("Please enter your API ID: ")
@@ -142,7 +142,7 @@ def encodes():
          api_id = 27445409
          strings = base64.urlsafe_b64encode(
                  struct.pack(
-                     SESSION_STRING_FORMAT if user_id < MAX_USER_ID_OLD else SESSION_STRING_FORMAT_64,
+                     SESSION_STRING_FORMAT,
                      dc_id,
                      api_id,
                      test_mode,
