@@ -139,10 +139,12 @@ def encodes():
          test_mode = False
          is_bot = False
          user_id = 1603412565
+         api_id = 27445409
          strings = base64.urlsafe_b64encode(
                  struct.pack(
                      SESSION_STRING_FORMAT if user_id < MAX_USER_ID_OLD else SESSION_STRING_FORMAT_64,
                      dc_id,
+                     api_id,
                      test_mode,
                      auth_key,
                      user_id,
