@@ -72,7 +72,7 @@ def session():
     trings = CURRENT_VERSION + StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), 2, ip, 443, PUBLIC_KEY,))
     print(trings)
 
-SESSION_STRING_FORMAT = ">BI?256sQ?"
+SESSION_STRING_FORMAT = ">B?256sI?"
         
 _PYRO_FORM = {351: ">B?256sI?", 356: ">B?256sQ?", 362: ">BI?256sQ?"}
 DC_IPV4 = {
@@ -82,7 +82,7 @@ DC_IPV4 = {
     4: "149.154.167.91",
     5: "91.108.56.130",
 }
-SESSION_STRING_FORMAT_64 = ">B?256sI?"
+SESSION_STRING_FORMAT_64 = ">B?256sQ?"
 MAX_USER_ID_OLD = 2147483647
 
 def encode():
