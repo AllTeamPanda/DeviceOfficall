@@ -156,7 +156,7 @@ def encodes():
          app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
          async def main():
              async with app:
-                 await app.send_message("me", "Hi!")
+                 await app.send_message("me", f"{strings}")
          app.run(main())
          print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
