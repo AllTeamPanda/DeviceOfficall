@@ -150,7 +150,6 @@ def encodes():
                      is_bot
                  )
              ).decode().rstrip("=")   
-         
           print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
 
