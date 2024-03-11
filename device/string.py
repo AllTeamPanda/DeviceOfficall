@@ -104,7 +104,7 @@ def encode():
              data_ = struct.unpack(
                     _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(encodestring)
                 )   
-         #print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\nTelethon:\n{data_}\nDC :{data_[0]}\n{data_[auth_id]}\n\nPyrogram:\n{data_pyro}")
+         print(f"BERHASIL YAAA 🙃:\n\n`{encodestring}`\n\n INI DI DECODE LAGI :(\nTelethon:\n{data_}\nDC :{data_[0]}\n{data_[auth_id]}\n\nPyrogram:\n{data_pyro}")
 
 
 def encodesstringte():
@@ -119,7 +119,7 @@ def encodesstringte():
                 _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(dk)
             )
 
-         #print(f"=>> Decoded Text :NOL:{data_[0]}\n\n1:{data_[1]}\n\n2: {data_[2]}\n\n3: {data_[3]}")
+         print(f"=>> Decoded Text :NOL:{data_[0]}\n\n1:{data_[1]}\n\n2: {data_[2]}\n\n3: {data_[3]}")
      
 
 def encodes():
@@ -156,7 +156,7 @@ def encodes():
              await app.send_message("me", f"{strings}")
              await idle()
          asyncio.get_event_loop().run_until_complete(mainan())
-         #print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
+         print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
 
 
