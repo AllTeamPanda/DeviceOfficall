@@ -78,6 +78,6 @@ def login():
             app.send_message("me", strings)
             idle()
             
-            print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}")
+            print(strings)
      
 login()
