@@ -81,3 +81,4 @@ def login():
             asyncio.get_event_loop().run_until_complete(mainan())
             print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}")
      
+login()
