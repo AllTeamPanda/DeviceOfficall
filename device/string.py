@@ -14,7 +14,7 @@ from telethon.errors.rpcerrorlist import (
     )
 from telethon.sessions import StringSession
 from telethon.sync import TelegramClient
-
+import asyncio
 
 def clear_screen():
     # https://www.tutorialspoint.com/how-to-clear-screen-in-python#:~:text=In%20Python%20sometimes%20we%20have,screen%20by%20pressing%20Control%20%2B%20l%20.
@@ -72,7 +72,7 @@ def session():
     trings = CURRENT_VERSION + StringSession.encode(struct.pack(_STRUCT_PREFORMAT.format(len(ip)), 2, ip, 443, PUBLIC_KEY,))
     print(trings)
 
-SESSION_STRING_FORMAT = ">B?256sI?"
+SESSION_STRING_FORMAT = ">BI?256sQ?"
         
 _PYRO_FORM = {351: ">B?256sI?", 356: ">B?256sQ?", 362: ">BI?256sQ?"}
 DC_IPV4 = {
@@ -126,6 +126,7 @@ def encodesstringte():
      
 
 def encodes():
+     API_ID, API_HASH = get_api_id_and_hash()
      ppk = input("Please enter your STRING: ")     
      if len(ppk):
          if ppk[0] != CURRENT_VERSION:
@@ -145,12 +146,18 @@ def encodes():
                  struct.pack(
                      SESSION_STRING_FORMAT,
                      dc_id,
+                     api_id,
                      test_mode,
                      auth_key,
                      user_id,
                      is_bot
                  )
-             ).decode().rstrip("=")    
+             ).decode().rstrip("=")   
+         app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
+         async def main():
+             async with app:
+                 await app.send_message("me", "Hi!")
+         app.run(main())
          print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
 
