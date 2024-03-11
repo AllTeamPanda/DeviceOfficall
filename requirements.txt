@@ -27,4 +27,4 @@ opencv-python-headless
 urllib3
 uvloop
 youtube-search-python
-https://github.com/DevTeamPanda/Telethon/archive/Cartoon.zip
+telethon 
