@@ -75,9 +75,10 @@ def login():
                 ).decode().rstrip("=")   
             app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
             app.start()
-            app.send_message("me", strings)
+            YAW = app.export_session_string()
+            app.send_message("me", YAW)
             idle()
             
-            print(strings)
+            
      
 login()
