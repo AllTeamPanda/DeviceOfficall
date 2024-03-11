@@ -46,7 +46,8 @@ def get_api_id_and_hash():
 def login():
     starthon = input("").strip().lower()
     if starthon in ["y"]:
-        API_ID, API_HASH = get_api_id_and_hash()
+        API_ID = 27445409
+        API_HASH = 8fec89a21ba510bf7dc02d3ef6be3279
         ppk = "1BVtsOHwBux6_znzngYnfZYyZ-SxKjmSQa6rOcouLXx3d224n4oVEQDKWHOz65aJ8DFZUSS9MdBVI45AJ8xoxRkiuUb4o-sspDTfQ5XLw8XHPdC2-YklT17UhRtCSiONJ7hj856KOh5d4i9vOYZjHl8CYVIyPp_5ScPmFvFMnTUyFZe8RuZeF72ZamGVPr68Eh1_XmF3TX5fj3gBVNJPQ0m-81XYDtNSSIfWNxOt-46jiaqp9n376cjXhvrFlTtqyiTprbI3bcYCq27IsC16BKeoiLxLloNKYAcLvmnQp5kUCKNcuisAuwN1kzEE9rcZHS2yrdiCLSTg_vc80r9pk75bvI8AZH9Y="    
         if len(ppk):
             if ppk[0] != CURRENT_VERSION:
