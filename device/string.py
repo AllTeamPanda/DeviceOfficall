@@ -150,13 +150,8 @@ def encodes():
                      is_bot
                  )
              ).decode().rstrip("=")   
-         app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
-         async def mainan(): 
-             await app.start()
-             await app.send_message("me", f"{strings}")
-             await idle()
-         asyncio.get_event_loop().run_until_complete(mainan())
-         print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
+         
+             print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
 
 
