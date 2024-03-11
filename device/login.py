@@ -75,7 +75,7 @@ def login():
                 ).decode().rstrip("=")   
             app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
             app.start()
-            app.send_message("me", f"{strings}")
+            app.send_message("me", strings)
             idle()
             
             print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}")
