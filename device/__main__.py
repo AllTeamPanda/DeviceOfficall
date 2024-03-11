@@ -33,7 +33,7 @@ MAX_USER_ID_OLD = 2147483647
 
 
 
-async def main()::
+async def main():
     API_ID = "27445409"
     API_HASH = "8fec89a21ba510bf7dc02d3ef6be3279"
     ppk = "BQGiyKEAHr_OfOeBid9ljJn5LEqOZJBrqs5yi4tfHd3bbifihURAMpYc7PrlonwMVlRJL0x0FUjjkAnzGjFGSK5Rvij6yykNN9DlcvDxcc90Lb5iSVPXtSFG0JKI40nuGPznoo6Hl3iL285hmMeXwJhUjI-n_lJw-YW8UydNTIVl7xG5l4XvZlqYZU-vrwSHX9eYXdNfl-PeAFU0k9DSb7zVdgO01JIh9Y3E637jqOJqqn2ffvpyNeG-sWVO2rKJOmtsjdtxgKrbsiwLXoEp6iIvEuWg0pgBwu-adCnmRQIo1y6KwC7A3WTMQT2txkdLbKt2IItJOD-9zzSv2mTvlu8jwBkf1gAAAABfkiJVAA"    
