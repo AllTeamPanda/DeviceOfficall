@@ -44,12 +44,9 @@ def get_pyro():
     API_ID, API_HASH = get_api_id_and_hash()
     SESSION = input("Please enter your SESSIONS: ")
     app = Client('userbot', api_id=API_ID, api_hash=API_HASH, session_string=SESSION)
-    ready = app.start()
+    app.start()
     
-    app.send_message(
-                "me",
-                f"\n\n**DO NOT SHARE it.**",
-    )
+    
 
 def get_ipaddres():
     print(
