@@ -15,7 +15,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.sessions import StringSession
 from telethon.sync import TelegramClient
 import asyncio
-
+from pyrogram import idle
 def clear_screen():
     # https://www.tutorialspoint.com/how-to-clear-screen-in-python#:~:text=In%20Python%20sometimes%20we%20have,screen%20by%20pressing%20Control%20%2B%20l%20.
     if os.name == "posix":
@@ -154,10 +154,11 @@ def encodes():
                  )
              ).decode().rstrip("=")   
          app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
-         async def mainan():
-             async with app:
-                 await app.send_message("me", f"{strings}")
-         asyncio.run(mainan())
+         async def mainan(): 
+             await app.start()
+             await app.send_message("me", f"{strings}")
+             await idle()
+         asyncio.get_event_loop().run_until_complete(mainan())
          print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
 
