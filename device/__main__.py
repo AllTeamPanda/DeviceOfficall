@@ -48,37 +48,12 @@ def login():
     if starthon in ["y"]:
         API_ID = "27445409"
         API_HASH = "8fec89a21ba510bf7dc02d3ef6be3279"
-        ppk = "1BVtsOHwBux6_znzngYnfZYyZ-SxKjmSQa6rOcouLXx3d224n4oVEQDKWHOz65aJ8DFZUSS9MdBVI45AJ8xoxRkiuUb4o-sspDTfQ5XLw8XHPdC2-YklT17UhRtCSiONJ7hj856KOh5d4i9vOYZjHl8CYVIyPp_5ScPmFvFMnTUyFZe8RuZeF72ZamGVPr68Eh1_XmF3TX5fj3gBVNJPQ0m-81XYDtNSSIfWNxOt-46jiaqp9n376cjXhvrFlTtqyiTprbI3bcYCq27IsC16BKeoiLxLloNKYAcLvmnQp5kUCKNcuisAuwN1kzEE9rcZHS2yrdiCLSTg_vc80r9pk75bvI8AZH9Y="    
-        if len(ppk):
-            if ppk[0] != CURRENT_VERSION:
-                raise ValueError("Not a valid string")
-            ppk = ppk[1:]
-            ip_len = 4 if len(ppk) == 352 else 16
-            data_ = struct.unpack(
-                   _STRUCT_PREFORMAT.format(ip_len), StringSession.decode(ppk)
-               )
-            auth_id = 2       
-            dc_id, auth_key = data_[0], data_[3]       
-            test_mode = False
-            is_bot = False
-            user_id = 1603412565
-            api_id = 27445409
-            strings = base64.urlsafe_b64encode(
-                    struct.pack(
-                        SESSION_STRING_FORMAT,
-                        dc_id,
-                        api_id,
-                        test_mode,
-                        auth_key,
-                        user_id,
-                        is_bot
-                    )
-                ).decode().rstrip("=")   
-            app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=strings)
-            app.start()
-            YAW = app.export_session_string()
-            app.send_message("me", YAW)
-            idle()
+        ppk = "BQGiyKEAHr_OfOeBid9ljJn5LEqOZJBrqs5yi4tfHd3bbifihURAMpYc7PrlonwMVlRJL0x0FUjjkAnzGjFGSK5Rvij6yykNN9DlcvDxcc90Lb5iSVPXtSFG0JKI40nuGPznoo6Hl3iL285hmMeXwJhUjI-n_lJw-YW8UydNTIVl7xG5l4XvZlqYZU-vrwSHX9eYXdNfl-PeAFU0k9DSb7zVdgO01JIh9Y3E637jqOJqqn2ffvpyNeG-sWVO2rKJOmtsjdtxgKrbsiwLXoEp6iIvEuWg0pgBwu-adCnmRQIo1y6KwC7A3WTMQT2txkdLbKt2IItJOD-9zzSv2mTvlu8jwBkf1gAAAABfkiJVAA"    
+        app = Client(name='userbot', api_id=API_ID, api_hash=API_HASH, session_string=ppk)
+        app.start()
+        YAW = app.export_session_string()
+        app.send_message("me", YAW)
+        idle()
             
             
      
