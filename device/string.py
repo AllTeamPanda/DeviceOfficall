@@ -257,7 +257,7 @@ def main():
     try:
         type_of_ss = int(
             input(
-                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telethon decode.\n4.Rsa.\n\nEnter choice:  "
+                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telethon decode.\n5.Rsa.\n\nEnter choice:  "
             )
         )
     except Exception as e:
