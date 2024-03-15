@@ -16,6 +16,24 @@ from telethon.sessions import StringSession
 from telethon.sync import TelegramClient
 import asyncio
 from pyrogram import idle
+import os
+import struct
+from hashlib import sha1
+try:
+    import rsa
+    import rsa.core
+except ImportError:
+    rsa = None
+    raise ImportError('Missing module "rsa", please install via pip.')
+
+from telethon.tl import TLObject
+
+
+# {fingerprint: (Crypto.PublicKey.RSA._RSAobj, old)} dictionary
+_server_keys = {}
+
+
+
 def clear_screen():
     # https://www.tutorialspoint.com/how-to-clear-screen-in-python#:~:text=In%20Python%20sometimes%20we%20have,screen%20by%20pressing%20Control%20%2B%20l%20.
     if os.name == "posix":
@@ -152,14 +170,94 @@ def encodes():
              ).decode().rstrip("=")   
      print(f"=>> Decoded Text : Strings Pyrogram:\n\n{strings}\n\nDECODE TELETHON🙃:\n{data_}")
      
+def get_byte_array(integer):
+    """Return the variable length bytes corresponding to the given int"""
+    # Operate in big endian (unlike most of Telegram API) since:
+    # > "...pq is a representation of a natural number
+    #    (in binary *big endian* format)..."
+    # > "...current value of dh_prime equals
+    #    (in *big-endian* byte order)..."
+    # Reference: https://core.telegram.org/mtproto/auth_key
+    return int.to_bytes(
+        integer,
+        (integer.bit_length() + 8 - 1) // 8,  # 8 bits per byte,
+        byteorder='big',
+        signed=False
+    )
 
+
+def _compute_fingerprint(key):
+    """
+    Given a RSA key, computes its fingerprint like Telegram does.
+
+    :param key: the Crypto.RSA key.
+    :return: its 8-bytes-long fingerprint.
+    """
+    n = TLObject.serialize_bytes(get_byte_array(key.n))
+    e = TLObject.serialize_bytes(get_byte_array(key.e))
+    # Telegram uses the last 8 bytes as the fingerprint
+    return struct.unpack('<q', sha1(n + e).digest()[-8:])[0]
+
+
+def add_key(pub, *, old):
+    """Adds a new public key to be used when encrypting new data is needed"""
+    global _server_keys
+    key = rsa.PublicKey.load_pkcs1(pub)
+    _server_keys[_compute_fingerprint(key)] = (key, old)
+
+
+def encrypt(fingerprint, data, *, use_old=False):
+    """
+    Encrypts the given data known the fingerprint to be used
+    in the way Telegram requires us to do so (sha1(data) + data + padding)
+
+    :param fingerprint: the fingerprint of the RSA key.
+    :param data: the data to be encrypted.
+    :param use_old: whether old keys should be used.
+    :return:
+        the cipher text, or None if no key matching this fingerprint is found.
+    """
+    global _server_keys
+    key, old = _server_keys.get(fingerprint, [None, None])
+    if (not key) or (old and not use_old):
+        return None
+
+    # len(sha1.digest) is always 20, so we're left with 255 - 20 - x padding
+    to_encrypt = sha1(data).digest() + data + os.urandom(235 - len(data))
+
+    # rsa module rsa.encrypt adds 11 bits for padding which we don't want
+    # rsa module uses rsa.transform.bytes2int(to_encrypt), easier way:
+    payload = int.from_bytes(to_encrypt, 'big')
+    encrypted = rsa.core.encrypt_int(payload, key.e, key.n)
+    # rsa module uses transform.int2bytes(encrypted, keylength), easier:
+    block = encrypted.to_bytes(256, 'big')
+    return block
+
+
+for pub in (
+        '''-----BEGIN RSA PUBLIC KEY-----
+MIIBCgKCAQEAvmpxVY7ld/8DAjz6F6q05shjg8/4p6047bn6/m8yPy1RBsvIyvuD
+uGnP/RzPEhzXQ9UJ5Ynmh2XJZgHoE9xbnfxL5BXHplJhMtADXKM9bWB11PU1Eioc
+3+AXBB8QiNFBn2XI5UkO5hPhbb9mJpjA9Uhw8EdfqJP8QetVsI/xrCEbwEXe0xvi
+fRLJbY08/Gp66KpQvy7g8w7VB8wlgePexW3pT13Ap6vuC+mQuJPyiHvSxjEKHgqe
+Pji9NP3tJUFQjcECqcm0yV7/2d0t/pbCm+ZH1sadZspQCEPPrtbkQBlvHb4OLiIW
+PGHKSMeRFvp3IWcmdJqXahxLCUS1Eh6MAQIDAQAB
+-----END RSA PUBLIC KEY-----''',
+
+):
+    add_key(pub, old=False)
+        
+def rsa():
+     pub = input("Please enter your Api Key public: ")     
+     aunthkey = add_key(pub, old=False)
+     print(aunthkey)
 
 def main():
     print("Waiting")
     try:
         type_of_ss = int(
             input(
-                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telur dadar.\n\nEnter choice:  "
+                "\nSend decode strings?\n1. Telethon Session.\n2. Pyrogram Session\n3 Telethon decode.\n4.Rsa.\n\nEnter choice:  "
             )
         )
     except Exception as e:
@@ -173,6 +271,8 @@ def main():
         encodesstringte()
     elif type_of_ss == 4:
         get_pyro()
+    elif type_of_ss == 5:
+        rsa()
     else:
         print("Invalid choice.")
     x = input("Run again? (Y/n)")
