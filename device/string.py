@@ -249,7 +249,7 @@ PGHKSMeRFvp3IWcmdJqXahxLCUS1Eh6MAQIDAQAB
         
 def rsa():
      pub = input("Please enter your Api Key public: ")     
-     aunthkey = add_key(pub, old=False)
+     aunthkey = rsa.PublicKey.load_pkcs1(pub)
      print(aunthkey)
 
 def main():
